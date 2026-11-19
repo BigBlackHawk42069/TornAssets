@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Number Font Preview</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Bodoni+Moda:opsz,wght@6..96,700&family=Libre+Caslon+Display&family=Libre+Caslon+Text:wght@700&family=Old+Standard+TT:wght@700&family=Limelight&family=Cinzel:wght@700&family=IM+Fell+English&family=Playfair+Display+SC:wght@700&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; padding: 28px; background: #1a120d; font-family: "IM Fell English", Georgia, serif; color: #2a1d14; }
+  h1 { color: #efe4cc; font: 700 20px "Playfair Display SC", serif; letter-spacing: .15em; margin: 0 0 18px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 18px; }
+  .card { background: #efe4cc; padding: 18px 20px 20px; text-align: center; box-shadow: 0 6px 16px rgba(0,0,0,.5); }
+  .name { font: 700 13px "Playfair Display SC", serif; letter-spacing: .18em; color: #7a5a24; }
+  .note { font-size: 13px; color: #5a4632; margin-top: 2px; }
+  .cur { outline: 2px solid #8e1616; outline-offset: -2px; }
+  h3 { font: 700 11px "Cinzel", serif; letter-spacing: .2em; margin: 14px 0 4px; }
+  .row { display: flex; justify-content: center; }
+  .p { display: flex; flex-direction: column; align-items: center; padding: 0 14px; }
+  .p + .p { border-left: 1px solid rgba(122,90,36,.45); }
+  .v { color: #8e1616; font-size: 21px; line-height: 1.15; font-variant-numeric: lining-nums; }
+  .l { font-size: 15px; }
+  .sep { display: inline-block; width: 1px; height: .75em; margin: 0 .6em; background: rgba(122,90,36,.55); }
+</style>
+</head>
+<body>
+<h1>NUMBER FONT PREVIEW</h1>
+<div class="grid" id="grid"></div>
+<script>
+  const fonts = [
+    ["Playfair Display", "700", "Current", true],
+    ["Bodoni Moda", "700", "High-contrast, 1920s–40s"],
+    ["Libre Caslon Text", "700", "Classic printed-book serif"],
+    ["Libre Caslon Display", "400", "Caslon, lighter display cut"],
+    ["Old Standard TT", "700", "19th-century print"],
+    ["Limelight", "400", "Art Deco display"],
+    ["Cinzel", "700", "Matches the letterhead"],
+  ];
+  const sep = '<i class="sep"></i>';
+  document.getElementById("grid").innerHTML = fonts.map(([f, w, note, cur]) => {
+    const v = t => `<span class="v" style="font-family:'${f}';font-weight:${w}">${t}</span>`;
+    return `<div class="card${cur ? " cur" : ""}">
+      <div class="name">${f.toUpperCase()}</div><div class="note">${note}</div>
+      <h3>STEADFAST</h3>
+      <div class="row"><div class="p">${v(`10%${sep}9%${sep}5%${sep}5%`)}<span class="l">Gym gains</span></div></div>
+      <h3>CRIMINALITY</h3>
+      <div class="row"><div class="p">${v("+13")}<span class="l">Nerve</span></div><div class="p">${v("+10%")}<span class="l">CS gain</span></div></div>
+      <h3>TOLERATION</h3>
+      <div class="row"><div class="p">${v("&minus;50%")}<span class="l">Drug addiction</span></div><div class="p">${v("&minus;30%")}<span class="l">Addiction effects</span></div><div class="p">${v("&minus;27%")}<span class="l">Overdose chance</span></div></div>
+    </div>`;
+  }).join("");
+</script>
+</body>
+</html>
